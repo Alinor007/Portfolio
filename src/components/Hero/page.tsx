@@ -4,9 +4,9 @@ import Image from 'next/image'
 import React from 'react'
 import { Circle } from 'lucide-react'
 
-const Home = () => {
+const Hero = () => {
   return (
-    <section className="relative py-32 overflow-hidden bg-gradient-to-b from-background to-muted/20 "id="home">
+    <section className="relative py-32 overflow-hidden bg-gradient-to-b from-background to-muted/20">
       {/* Decorative background circle */}
       <div className="absolute inset-0 flex justify-center items-center">
         <div className="w-[800px] h-[800px] bg-primary/10 rounded-full blur-3xl animate-pulse" />
@@ -20,7 +20,7 @@ const Home = () => {
               Hello 👋
             </h2>
             <h1 className="text-4xl md:text-7xl font-extrabold bg-gradient-to-r from-primary via-accent to-foreground bg-clip-text text-transparent capitalize">
-              This is Alinor
+              This is Yunx
             </h1>
           </div>
 
@@ -49,4 +49,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Hero

@@ -8,16 +8,21 @@ import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 
  const navbarLinks = [
-    {name:"home",   route:"/", Icon: ""},
-    {name:"about", route:"/about", Icon: ""},
-    {name:"projects", route:"/projects", Icon: ""},
-    {name:"contact", route:"/contact", Icon: ""},
+    {name:"home",   route:"home", Icon: ""},
+    {name:"about", route:"about", Icon: ""},
+    {name:"projects", route:"projects", Icon: ""},
+    {name:"contact", route:"contact", Icon: ""},
 ]
 
 
 
 const MobileNavbar = () => {
-    const pathname = usePathname();
+      const handleScroll = (id: string) => {
+    const section = document.getElementById(id)
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
   
   return (
     <div >
@@ -34,18 +39,16 @@ const MobileNavbar = () => {
             </Link>
           </div>
           <nav className='flex flex-col flex-1 items-center gap-4 capitalize text-2xl'>
-              {navbarLinks.map ((link)=>{
-                const isActive = pathname === link.route 
-                console.log("Path",isActive)
-                return (
-                  <Link
-                  href={link.route} 
-                  key={link.name}
-                  className={cn('flex px-2', {'border-b-4 border-amber-200':isActive})}>
-                    {link.name}
-                  </Link>
-                )
-              })}
+              {navbarLinks.map((link) => (
+              <SheetClose asChild key={link.route}>
+                <button
+                  onClick={() => handleScroll(link.route)}
+                  className="hover:text-amber-500 transition-colors"
+                >
+                  {link.name}
+                </button>
+              </SheetClose>
+            ))}
           </nav>
         </SheetContent>
         

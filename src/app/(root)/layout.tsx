@@ -3,42 +3,62 @@ import { Poppins } from "next/font/google";
 import "../globals.css";
 import Navbar from "@/components/Navbar/page";
 import MobileNavbar from "@/components/MobileNavbar/page";
-import { Circle } from "lucide-react";
 import Image from "next/image";
-
+import Home from "./page";
+import About from "./about/page";
+import Project from "./projects/page";
+import Contact from "./contact/page";
+import Footer from "@/components/Footer/page";
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
+  variable: "--font-poppins",
 });
 
-
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "My portfolio",
+  title: "Alinor Abdulgafor | Portfolio",
+  description: "Portfolio showcasing my work as a full-stack web developer.",
+  
 };
 
-export default function RootLayout({children,}:{ children: React.ReactNode;})
- {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  
   return (
-   <main className="h-full">
-    <header className="py-7  text-amber-300 flex items-center ">
-      <div className="container mx-auto flex justify-between items-center ">
-          
-          <Image 
-            src="/asset/Logo.png" 
-            alt="profile" 
-            width={100} 
-            height={100}
-            className=' '/>
-        <Navbar/>
-      </div>
-        <MobileNavbar/>
+    <main className="h-full scroll-smooth">
+          <div className="container mx-auto flex justify-between items-center px-4 md:px-8">
+            <div className="flex items-center gap-3">
+              <Image
+                src="/asset/Logo.png"
+                alt="Logo"
+                width={70}
+                height={70}
+                className="rounded-full"
+                priority
+              />
+              <span className="text-lg md:text-xl font-semibold text-primary tracking-wide">
+                Alinor 
+              </span>
+            </div>
+            <Navbar />
+            <div className="md:hidden">
+              <MobileNavbar />
+            </div>
+          </div>
+
+        {/* Main Sections */}
        
-    </header>
- 
-    {children}
-    
-   </main>
+          <Home />
+          <About />
+          <Project />
+          <Contact />
+
+        {/* Footer */}
+        <Footer/>
+    </main>
   );
 }
