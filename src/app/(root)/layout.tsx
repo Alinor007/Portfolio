@@ -9,6 +9,7 @@ import About from "./about/page";
 import Project from "./projects/page";
 import Contact from "./contact/page";
 import Footer from "@/components/Footer/page";
+import WorkflowBuilder from "@/components/WorkflowBuilder/page";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -56,6 +57,7 @@ export default function RootLayout({
           <About />
           <Project />
           <Contact />
+          <WorkflowBuilder/>
 
         {/* Footer */}
         <Footer/>
