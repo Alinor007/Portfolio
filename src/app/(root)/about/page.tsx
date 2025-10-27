@@ -16,20 +16,7 @@ const About = () => {
       className="min-h-screen flex items-center justify-center px-6 py-20 bg-gradient-to-b from-background to-muted/20 relative overflow-hidden"
       id="about"
     >
-              <div className="relative w-full h-screen">
-          <motion.div
-            drag
-            dragConstraints={{ top: 0, left: 0, right: 300, bottom: 300 }}
-            className="absolute w-64 h-64 rounded-full overflow-hidden border-4 border-primary/40 shadow-lg cursor-grab"
-          >
-            <Image
-              src="/asset/Profile.png"
-              alt="Profile"
-              fill
-              className="object-cover"
-            />
-          </motion.div>
-        </div>
+         
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary/10 rounded-full blur-3xl animate-pulse" />
 

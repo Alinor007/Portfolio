@@ -57,7 +57,6 @@ export default function RootLayout({
           <About />
           <Project />
           <Contact />
-          <WorkflowBuilder/>
 
         {/* Footer */}
         <Footer/>
