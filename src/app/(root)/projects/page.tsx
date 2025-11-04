@@ -17,6 +17,7 @@ const projects = [
     image: '/asset/ranao-job.png',
     github: 'https://github.com/MACKY1516/ranao-jobs-platform',
   },
+  
 ]
 
 const Project = () => {

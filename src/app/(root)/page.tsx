@@ -5,7 +5,7 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <section className="relative py-32 overflow-hidden">
+    <section className="relative py-32 overflow-hidden"  id="home">
       {/* Background image */}
       <Image
         src="/asset/bgmoon.jpg"
@@ -31,7 +31,7 @@ const Home = () => {
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto animate-fade-in [animation-delay:200ms]">
-            We bring ideas to life through <span className="text-primary font-semibold">clean code</span> and <span className="text-primary font-semibold">beautiful design</span>.
+            I love exploring and creating <span className="text-primary font-semibold">I'm lifelong learner</span> and <span className="text-primary font-semibold">passionate about technology and creativity.</span>.
           </p>
 
           {/* Social + Button */}
