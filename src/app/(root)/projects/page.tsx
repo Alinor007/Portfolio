@@ -7,7 +7,7 @@ const projects = [
     title: '🌿 GreenThumb',
     description:
       'An IoT-powered smart greenhouse system for automated irrigation and plant monitoring, built with ESP32, Firebase, and React Native.',
-    image: '/asset/greenthumb.jpg', // optional, if you have a screenshot
+    image: '/asset/greenthumb.jpg',
     github: 'https://github.com/80may/greenthumb',
   },
   {
@@ -17,8 +17,15 @@ const projects = [
     image: '/asset/ranao-job.png',
     github: 'https://github.com/MACKY1516/ranao-jobs-platform',
   },
-  
+  {
+    title: '🌱 MSU Herbarium Management System',
+    description:
+      'A comprehensive herbarium management system for MSU, designed to catalog, track, and manage plant specimens efficiently. Built with modern web technologies.',
+    image: '/asset/msu-herbarium.png', // optional, replace with your screenshot path
+    github: 'https://github.com/barodimp015-commits/HDMS-Caps',
+  },
 ]
+
 
 const Project = () => {
   return (
@@ -46,11 +53,11 @@ const Project = () => {
               className="group relative border border-border rounded-2xl p-6 bg-card hover:bg-primary/5 transition-all hover:shadow-lg"
             >
               {proj.image && (
-                <div className="mb-5 overflow-hidden rounded-xl">
+                <div className="mb-5 overflow-hidden rounded-xl border-2 border-primary">
                   <img
                     src={proj.image}
                     alt={proj.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500 "
                   />
                 </div>
               )}
@@ -62,26 +69,19 @@ const Project = () => {
                 {proj.description}
               </p>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center">
                 <Button
-                  variant="default"
+                  variant="outline"
                   size="sm"
                   asChild
                   className="flex items-center gap-2"
                 >
                   <a href={proj.github} target="_blank" rel="noopener noreferrer">
-                    <Github className="w-4 h-4" /> View Code
+                    <Github className="w-4 h-4" /> Github
                   </a>
                 </Button>
 
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="flex items-center gap-2"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  Live Demo
-                </Button>
+             
               </div>
             </div>
           ))}

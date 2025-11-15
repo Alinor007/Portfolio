@@ -25,7 +25,7 @@ const Home = () => {
               Hello
             </h2>
             <h1 className="text-4xl md:text-7xl font-extrabold bg-gradient-to-r from-primary via-accent to-foreground bg-clip-text text-transparent capitalize">
-              This is Yunx
+              This is Alinor
             </h1>
           </div>
 
