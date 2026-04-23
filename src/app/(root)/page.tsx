@@ -34,7 +34,7 @@ const Home = () => {
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto animate-fade-in [animation-delay:200ms]">
-            I love exploring and creating <span className="text-primary font-semibold">I'm lifelong learner</span> and <span className="text-primary font-semibold">passionate about technology and creativity.</span>.
+            I love exploring and creating <span className="text-primary font-semibold">I&apos;m a lifelong learner</span> and <span className="text-primary font-semibold">passionate about technology and creativity.</span>.
           </p>
 
           {/* Social + Button */}

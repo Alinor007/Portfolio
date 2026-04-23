@@ -17,6 +17,7 @@ import "reactflow/dist/style.css";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PlusIcon } from "@radix-ui/react-icons";
+import { Connection } from "reactflow";
 
 export default function WorkflowBuilder() {
   // --- State for nodes and edges ---
@@ -47,7 +48,7 @@ export default function WorkflowBuilder() {
   );
 
   const onConnect = useCallback(
-    (params: any) => setEdges((eds) => addEdge(params, eds)),
+    (params: Connection) => setEdges((eds) => addEdge(params, eds)),
     []
   );
 
