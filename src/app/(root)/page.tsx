@@ -3,6 +3,8 @@ import Social from '../../../Social/Social'
 import Image from 'next/image'
 import React from 'react'
 
+
+// Homepage component with background image, greeting, subtitle, social icons, and a call-to-action button
 const Home = () => {
   return (
     <section className="relative py-32 overflow-hidden"  id="home">
@@ -14,6 +16,7 @@ const Home = () => {
         priority
         className="object-cover object-center -z-10"
       />
+
 
 
       {/* Content */}
