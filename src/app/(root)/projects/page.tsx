@@ -1,5 +1,5 @@
 import React from 'react'
-import { Github, ExternalLink } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const projects = [
@@ -22,7 +22,7 @@ const projects = [
     description:
       'A comprehensive herbarium management system for MSU, designed to catalog, track, and manage plant specimens efficiently. Built with modern web technologies.',
     image: '/asset/msu-herbarium.png', // optional, replace with your screenshot path
-    github: 'https://github.com/barodimp015-commits/HDMS-Caps',
+    github: 'https://msu-herbarium-ms.vercel.app/',
   },
 ]
 
@@ -77,7 +77,7 @@ const Project = () => {
                   className="flex items-center gap-2"
                 >
                   <a href={proj.github} target="_blank" rel="noopener noreferrer">
-                    <Github className="w-4 h-4" /> Github
+                    <ExternalLink className="w-4 h-4" /> Live Demo
                   </a>
                 </Button>
 
