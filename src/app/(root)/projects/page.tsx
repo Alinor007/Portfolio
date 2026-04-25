@@ -15,7 +15,7 @@ const projects = [
     description:
       'A full-stack job platform that connects employers and job seekers in Lanao. Built with React, Node.js, and Firebase.',
     image: '/asset/ranao-job.png',
-    github: 'https://github.com/MACKY1516/ranao-jobs-platform',
+    github: 'https://ranaojob-platform.vercel.app/',
   },
   {
     title: '🌱 MSU Herbarium Management System',
