@@ -4,25 +4,32 @@ import { Button } from '@/components/ui/button'
 
 const projects = [
   {
-    title: '🌿 GreenThumb',
+    title: 'GreenThumb',
     description:
       'An IoT-powered smart greenhouse system for automated irrigation and plant monitoring, built with ESP32, Firebase, and React Native.',
     image: '/asset/greenthumb.jpg',
     github: 'https://github.com/80may/greenthumb',
   },
   {
-    title: '💼 Ranao Job Platform',
+    title: ' Ranao Job Platform',
     description:
       'A full-stack job platform that connects employers and job seekers in Lanao. Built with React, Node.js, and Firebase.',
     image: '/asset/ranao-job.png',
     github: 'https://ranaojob-platform.vercel.app/',
   },
   {
-    title: '🌱 MSU Herbarium Management System',
+    title: ' MSU Herbarium Management System',
     description:
       'A comprehensive herbarium management system for MSU, designed to catalog, track, and manage plant specimens efficiently. Built with modern web technologies.',
     image: '/asset/msu-herbarium.png', // optional, replace with your screenshot path
     github: 'https://msu-herbarium-ms.vercel.app/',
+  },
+    {
+    title: 'CE Graduation Predictor',
+    description:
+      'A machine learning web application that predicts whether a Civil Engineering student at **Mindanao State University – Main Campus, Marawi City** will graduate on time.',
+    image: '/asset/ce-pred.png',
+    github: 'https://ce-predictor-msu.streamlit.app//',
   },
 ]
 
