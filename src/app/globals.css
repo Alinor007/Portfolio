@@ -1,137 +1,273 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+/* ============================================================
+   OKIR — a design system rooted in Maranao ornament.
+   Warm ink ground, brass rules, jade accents, carved texture.
+   Dark-only by intent: there is no light theme and no .dark class.
+   ============================================================ */
 
+@theme {
+  /* ---- Ground & surfaces ---- */
+  --color-ground: #0f0d0b;
+  --color-surface: #16130f;
+  --color-surface-2: #1f1a14;
 
-/* #E7701F  This should be a primary color*/
-/* Light theme variables */
-:root {
+  /* ---- Brass (primary accent) ----
+     #C8973F on #0F0D0B ≈ 6.9:1 — safe for body text. */
+  --color-brass: #c8973f;
+  --color-brass-dim: #8a6b2e;
+  --color-brass-deep: #4a3a1c;
+  --color-brass-bright: #e3b75c;
 
-  --yellow:#fee685;
-  --orange1:#E7701F;
-  --primary: oklch(82.8% 0.189 84.429);
-  --secondary: oklch(0.97 0 0);
-  --tertiary: #DBE2EF;
-  --radius: 0.625rem;
-  --background:  oklch(0.145 0 0);
-  --foreground: oklch(1 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* ---- Jade (secondary accent) ----
+     --color-jade is ≈3.3:1 — surfaces, borders and large display only.
+     Use --color-jade-text (≈6.7:1) whenever jade carries words. */
+  --color-jade: #2f6f62;
+  --color-jade-text: #5fa694;
+  --color-jade-deep: #14322c;
+
+  /* ---- Ink (text) ---- */
+  --color-ink: #f2ede4;
+  --color-ink-muted: #a39a8c;
+  --color-ink-faint: #6b6459;
+
+  /* ---- shadcn/ui bridge ----
+     The ui/ primitives reference these names. Wiring them to the okir
+     palette makes those components inherit the theme instead of
+     fighting it — and is what fixes the white-on-white card bug. */
+  --color-background: #0f0d0b;
+  --color-foreground: #f2ede4;
+  --color-card: #16130f;
+  --color-card-foreground: #f2ede4;
+  --color-popover: #16130f;
+  --color-popover-foreground: #f2ede4;
+  --color-primary: #c8973f;
+  --color-primary-foreground: #14100a;
+  --color-secondary: #1f1a14;
+  --color-secondary-foreground: #f2ede4;
+  --color-muted: #1f1a14;
+  --color-muted-foreground: #a39a8c;
+  --color-accent: #2f6f62;
+  --color-accent-foreground: #f2ede4;
+  --color-destructive: #b23a28;
+  --color-border: #2a231a;
+  --color-input: #2a231a;
+  --color-ring: #c8973f;
+
+  /* ---- Type ----
+     Variables are supplied by next/font in src/app/layout.tsx. */
+  --font-display: var(--font-fraunces), "Iowan Old Style", Georgia, serif;
+  --font-sans: var(--font-karla), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-spline-mono), ui-monospace, "SF Mono", monospace;
+
+  /* ---- Radius ----
+     Tight by intent. Carved edges, not soft cards. */
+  --radius: 0.25rem;
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.375rem;
+  --radius-xl: 0.5rem;
+
+  /* ---- Motion ---- */
+  --ease-carve: cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-fade-in: fade-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-rise: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-unfurl: unfurl 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-bloom: bloom 14s ease-in-out infinite;
 }
 
-/* Tailwind theme mapping */
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-tertiary: var(--tertiary);
-
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-orange1:var(--color-orange1a)
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+/* Real keyframes. The previous stylesheet used `animate-fade-in`
+   in six places without ever defining it. */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-/* Dark theme overrides */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
 
-/* Base body styles */
+/* Used to draw the okir linework on as if being carved. */
+@keyframes unfurl {
+  from {
+    stroke-dashoffset: var(--okir-length, 1200);
+    opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+@keyframes bloom {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translate3d(0, -2%, 0) scale(1.08);
+  }
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border-color: var(--color-border);
   }
+
+  html {
+    scroll-behavior: smooth;
+    /* Sections are anchor-scrolled behind a sticky header. */
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--color-ground);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--color-brass);
+    color: #14100a;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  /* Brass scrollbar, so even the chrome stays in the palette. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-ground);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-brass-deep);
+    border: 2px solid var(--color-ground);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brass-dim);
+  }
+}
+
+@layer components {
+  /* Section eyebrow — mono, brass, letterspaced, with a short rule.
+     Repeated at the head of every section. */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--color-brass);
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-brass)
+    );
+  }
+
+  /* Hairline used to separate editorial rows. Fades at both ends so it
+     reads as an engraved line rather than a hard border. */
+  .hairline {
+    height: 1px;
+    border: 0;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-brass-deep) 15%,
+      var(--color-brass-dim) 50%,
+      var(--color-brass-deep) 85%,
+      transparent
+    );
+  }
+
+  /* Link underline that grows from the left on hover. */
+  .link-carve {
+    position: relative;
+    color: var(--color-ink);
+    transition: color 0.35s var(--ease-carve);
+  }
+
+  .link-carve::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s var(--ease-carve);
+  }
+
+  .link-carve:hover {
+    color: var(--color-brass);
+  }
+
+  .link-carve:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

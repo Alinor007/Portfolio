@@ -1,65 +1,28 @@
-import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
-import "../globals.css";
-import Navbar from "@/components/Navbar/page";
-import MobileNavbar from "@/components/MobileNavbar/page";
-import Image from "next/image";
-import Home from "./page";
-import About from "./about/page";
-import Project from "./projects/page";
-import Contact from "./contact/page";
-import Footer from "@/components/Footer/page";
-import WorkflowBuilder from "@/components/WorkflowBuilder/page";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-poppins",
-});
-
-export const metadata: Metadata = {
-  title: "Alinor Abdulgafor | Portfolio",
-  description: "Portfolio showcasing my work as a full-stack web developer.",
-  
-};
-
+/**
+ * Chrome only. The previous version imported every section page and
+ * rendered them inline while never rendering `children`, which made
+ * /about, /projects and /contact serve duplicate copies of the homepage.
+ */
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  
   return (
-    <main className="h-full scroll-smooth">
-          <div className="container mx-auto flex justify-between items-center px-4 md:px-8">
-            <div className="flex items-center gap-3">
-              <Image
-                src="/asset/Logo.png"
-                alt="Logo"
-                width={70}
-                height={70}
-                className="rounded-full"
-                priority
-              />
-              <span className="text-lg md:text-xl font-semibold text-primary tracking-wide">
-                Alinor 
-              </span>
-            </div>
-            <Navbar />
-            <div className="md:hidden">
-              <MobileNavbar />
-            </div>
-          </div>
+    <div className="relative flex min-h-screen flex-col">
+      <a
+        href="#home"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-6 focus:top-6 focus:z-[60] focus:border focus:border-brass focus:bg-ground focus:px-5 focus:py-3 focus:font-mono focus:text-xs focus:uppercase focus:tracking-[0.2em] focus:text-brass"
+      >
+        Skip to content
+      </a>
 
-        {/* Main Sections */}
-       
-          <Home />
-          <About />
-          <Project />
-          <Contact />
-
-        {/* Footer */}
-        <Footer/>
-    </main>
+      <Header />
+      <main className="flex-1">{children}</main>
+      <Footer />
+    </div>
   );
 }
